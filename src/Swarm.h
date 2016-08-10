@@ -12,7 +12,7 @@ class Swarm{
 		~Swarm();
 		void update();
 		void updateAttributes();
-		void drawTextures();
+		void draw();
 
 
 		vector <ofVec3f> forces;

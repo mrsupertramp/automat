@@ -2,6 +2,7 @@
 
 #include "ofMain.h"
 #include "Swarm.h"
+#include "Chain.h"
 #include "Beat.h"
 
 class ofApp : public ofBaseApp{
@@ -10,6 +11,8 @@ class ofApp : public ofBaseApp{
 		void setup();
 		void update();
 		void draw();
+
+		void drawSwarmTexture();
 
 		void keyPressed(int key);
 		void keyReleased(int key);
@@ -25,6 +28,9 @@ class ofApp : public ofBaseApp{
 
 
 		Swarm swarm;
+
+		Chain chain = Chain(200, 10.0);
+
 
 		ofEasyCam camera;
 

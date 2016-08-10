@@ -8,7 +8,7 @@ void ofApp::setup(){
 	ofSetVerticalSync(true);
 	ofDisableArbTex();
 
-	int camDist  = 100;
+	int camDist  = 200;
 	camera.setDistance(camDist);
 
 
@@ -31,15 +31,31 @@ void ofApp::setup(){
 
 //--------------------------------------------------------------
 void ofApp::update(){
-	swarm.update();
-	vbo.setVertexData(&swarm.positions[0], swarm.positions.size(), GL_STATIC_DRAW);
-	vbo.setNormalData(&swarm.sizes[0], swarm.positions.size(), GL_STATIC_DRAW);
+	//swarm.update();
+	//vbo.setVertexData(&swarm.positions[0], swarm.positions.size(), GL_STATIC_DRAW);
+	//vbo.setNormalData(&swarm.sizes[0], swarm.positions.size(), GL_STATIC_DRAW);
 
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
 
+	ofSetColor(255);
+	chain.update();
+	camera.begin();
+	chain.draw();
+	camera.end();
+
+	ofDisablePointSprites();
+	ofDisableBlendMode();
+
+	ofDrawBitmapString("framerate: " + ofToString(ofGetFrameRate()),ofGetWidth() - 160, 20);
+	ofDrawBitmapString("bpm: " + ofToString(beat.getBpm()),ofGetWidth() - 160, 40);
+
+}
+
+void ofApp::drawSwarmTexture()
+{
 	glDepthMask(GL_FALSE);
 	
 	ofColor c;
@@ -64,13 +80,6 @@ void ofApp::draw(){
 
 	camera.end();
 	shader.end();
-	
-	ofDisablePointSprites();
-	ofDisableBlendMode();
-
-	ofDrawBitmapString("framerate: " + ofToString(ofGetFrameRate()),ofGetWidth() - 160, 20);
-	ofDrawBitmapString("bpm: " + ofToString(beat.getBpm()),ofGetWidth() - 160, 40);
-
 }
 
 //--------------------------------------------------------------
