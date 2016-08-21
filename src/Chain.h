@@ -10,8 +10,9 @@ class Chain{
 
 		void positionSegment(int a, int b);
 
-		void reachSegment(int i, ofVec3f posIn);
+		void dragSegment(int i, ofVec3f posIn);
 
+		void setPosDragFirst(ofVec3f first);
 		void update();
 
 		void draw();
@@ -24,5 +25,6 @@ class Chain{
 
 	private:
 		float segLength = 50.0;
+		ofVec3f positionReachFirst;
 
 };

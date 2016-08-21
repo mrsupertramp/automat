@@ -34,6 +34,8 @@ void ofApp::update(){
 	//swarm.update();
 	//vbo.setVertexData(&swarm.positions[0], swarm.positions.size(), GL_STATIC_DRAW);
 	//vbo.setNormalData(&swarm.sizes[0], swarm.positions.size(), GL_STATIC_DRAW);
+	chain.setPosDragFirst(ofVec3f(ofGetMouseX()-ofGetWidth()/2.0, ofGetHeight()/2.0-ofGetMouseY(),0));
+	chain.update();
 
 }
 
@@ -41,7 +43,6 @@ void ofApp::update(){
 void ofApp::draw(){
 
 	ofSetColor(255);
-	chain.update();
 	camera.begin();
 	chain.draw();
 	camera.end();
